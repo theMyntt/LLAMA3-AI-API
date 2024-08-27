@@ -9,7 +9,7 @@ namespace llama_api.Controllers
     [ApiController]
     public class PromptController : ControllerBase
     {
-        [HttpPost("prompt")]
+        [HttpPost]
         [Tags("Send a Message")]
         public async Task<IActionResult> Message([FromBody] PromptDTO dto) 
         {
