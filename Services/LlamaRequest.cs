@@ -8,13 +8,7 @@ public class LlamaRequest
 {
     public static async Task<string> Prompt(string prompt) 
     {
-        var apiKey = Environment.GetEnvironmentVariable("API_KEY");
-
-        if (apiKey == null)
-        {
-            throw new InvalidDataException("API_KEY is not set");
-        }
-
+        var apiKey = Environment.GetEnvironmentVariable("API_KEY") ?? throw new InvalidDataException("API_KEY is not set");
         var client = new GroqApiClient(apiKey);
 
         var request = new JsonObject
