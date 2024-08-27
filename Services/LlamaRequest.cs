@@ -6,7 +6,7 @@ namespace llama_api.Services;
 
 public class LlamaRequest
 {
-    static async Task<string> Prompt(string prompt) 
+    public static async Task<string> Prompt(string prompt) 
     {
         var apiKey = Environment.GetEnvironmentVariable("API_KEY");
 
