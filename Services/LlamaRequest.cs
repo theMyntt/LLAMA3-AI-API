@@ -12,7 +12,7 @@ public class LlamaRequest
 
         if (apiKey == null)
         {
-            throw new Exception("API_KEY is not set");
+            throw new InvalidDataException("API_KEY is not set");
         }
 
         var client = new GroqApiClient(apiKey);

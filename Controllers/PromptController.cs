@@ -13,8 +13,17 @@ namespace llama_api.Controllers
         [Tags("Send a Message")]
         public async Task<IActionResult> Message([FromBody] PromptDTO dto) 
         {
-            var message = await LlamaRequest.Prompt(dto.Message);
-            return Ok(new PromptDTO { Message = message });
+            try 
+            {
+                var message = await LlamaRequest.Prompt(dto.Message);
+                return Ok(new PromptDTO { Message = message });
+            } 
+            catch (InvalidDataException) 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new {
+                    message = "API KEY is not set"
+                });
+            }
         }
     }
 }
