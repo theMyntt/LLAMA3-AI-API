@@ -1,7 +1,7 @@
 # LLAMA3 API
 
 - Developed with .NET Core
-- A API Connected to model llama3-8b-8192 of [Groq](https://groq.com)
+- A API Connected to llama3-8b-8192 AI model of [Groq](https://groq.com)
 
 <div style="display: flex; gap: 5px">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg" width="48px"/>          
