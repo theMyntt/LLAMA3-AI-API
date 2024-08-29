@@ -16,6 +16,20 @@ public class LlamaRequest
         _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
     }
 
+    private async Task<JsonNode?> _GetAwnserAsync(JsonObject request)
+    {
+        var response = await _http.PostAsJsonAsync(Url, request);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"API request failed with status code {response.StatusCode}. Response content: {errorContent}");
+        }
+
+        var responseBody = await response.Content.ReadAsStringAsync();
+        return JsonNode.Parse(responseBody);
+    }
+    
     public async Task<string> Prompt(string prompt) 
     {
         var request = new JsonObject
@@ -31,18 +45,9 @@ public class LlamaRequest
             }
         };
 
-        var response = await _http.PostAsJsonAsync(Url, request);
+        var response = await _GetAwnserAsync(request);
 
-        if (!response.IsSuccessStatusCode)
-        {
-            var errorContent = await response.Content.ReadAsStringAsync();
-            throw new HttpRequestException($"API request failed with status code {response.StatusCode}. Response content: {errorContent}");
-        }
-
-        var responseBody = await response.Content.ReadAsStringAsync();
-        var jsonResponse = JsonNode.Parse(responseBody);
-
-        var message = jsonResponse?["choices"]?[0]?["message"]?["content"]?.ToString();
+        var message = response?["choices"]?[0]?["message"]?["content"]?.ToString();
 
         return message ?? "";
     }
