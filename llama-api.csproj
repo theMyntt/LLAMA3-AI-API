@@ -12,4 +12,21 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Plugins\GroqPlugin.cs" />
+    <Compile Remove="Plugins\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Plugins\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Plugins\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Plugins\**" />
+  </ItemGroup>
+
 </Project>
