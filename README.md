@@ -14,6 +14,3 @@ After clonning repository, installed nuget packages and generate your groq key:
 - The Swagger will be available at /swagger route
 - By default, the app will listen to 5000 port
 - Initialize project with `dotnet run`
-
-## Finalization
-- This app use  [jgravelle.GroqApiLibrary](https://github.com/jgravelle/GroqApiLibrary) plugin, all credits is for him.
