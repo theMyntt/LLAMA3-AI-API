@@ -583,3 +583,5 @@ FodyWeavers.xsd
 # End of https://www.toptal.com/developers/gitignore/api/csharp,visualstudio
 
 .env
+/.idea/.idea.llama-api/.idea/vcs.xml
+/.idea/.idea.llama-api/.idea/indexLayout.xml
